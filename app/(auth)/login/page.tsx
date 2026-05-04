@@ -8,13 +8,12 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
-import { createClient } from "@supabase/supabase-js"
 import { Loader2, AlertCircle } from "lucide-react"
 
 // Create client-side Supabase client
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
-const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null
+// const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+// const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+// const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null
 
 export default function LoginPage() {
   const router = useRouter()
@@ -105,7 +104,7 @@ export default function LoginPage() {
                   required
                   placeholder="you@example.com"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, email: e.target.value })}
                   disabled={isLoading}
                 />
               </div>
@@ -128,7 +127,7 @@ export default function LoginPage() {
                   required
                   placeholder="Enter your password"
                   value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, password: e.target.value })}
                   disabled={isLoading}
                 />
               </div>
@@ -137,7 +136,7 @@ export default function LoginPage() {
                 <Checkbox 
                   id="remember" 
                   checked={rememberMe}
-                  onCheckedChange={(checked) => setRememberMe(checked as boolean)}
+                  onCheckedChange={(checked: boolean) => setRememberMe(checked)}
                   disabled={isLoading}
                 />
                 <Label htmlFor="remember" className="text-sm font-normal">

@@ -54,16 +54,39 @@ export default function StudentDashboard() {
     updateLoginStreak,
   } = useStudentStore()
 
+  const levelDisplay = getTokenLevelDisplay(tokenLevel)
+  const levelProgress = getProgressToNextLevel(currentTokens)
+  const inProgressCourses = enrolledCourses.filter(c => c.status === 'in_progress')
+  const unlockedAchievements = achievements.filter(a => !a.isLocked)
+
+  const learningEnergy = useMemo(() => {
+    const base = Math.min(3, totalLessonsCompleted % 10) * 22
+    const streak = loginStreak > 0 ? 24 : 0
+    return Math.min(100, base + streak + (currentCgpa >= 3 ? 20 : 0))
+  }, [totalLessonsCompleted, loginStreak, currentCgpa])
+
   useEffect(() => {
     setMounted(true)
   }, [])
 
   useEffect(() => {
     if (mounted && isOnboarded) {
-      // Process login streak on dashboard load
       updateLoginStreak()
     }
   }, [mounted, isOnboarded, updateLoginStreak])
+
+  useEffect(() => {
+    const c = inProgressCourses[0]
+    if (!c) return
+    fetch('/api/ollama/daily-missions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ course: c.title, department: MOCK_DEPARTMENTS.find(d => d.id === departmentId)?.name || 'General' }),
+    })
+      .then((r) => r.json())
+      .then(data => setMissionsText(data.missions || ''))
+      .catch(() => {})
+  }, [inProgressCourses, departmentId])
 
   // Show loading while hydrating
   if (!mounted) {
@@ -107,29 +130,6 @@ export default function StudentDashboard() {
 
   const faculty = MOCK_FACULTIES.find(f => f.id === facultyId)
   const department = MOCK_DEPARTMENTS.find(d => d.id === departmentId)
-  const levelDisplay = getTokenLevelDisplay(tokenLevel)
-  const levelProgress = getProgressToNextLevel(currentTokens)
-  const inProgressCourses = enrolledCourses.filter(c => c.status === 'in_progress')
-  const unlockedAchievements = achievements.filter(a => !a.isLocked)
-
-  const learningEnergy = useMemo(() => {
-    const base = Math.min(3, totalLessonsCompleted % 10) * 22
-    const streak = loginStreak > 0 ? 24 : 0
-    return Math.min(100, base + streak + (currentCgpa >= 3 ? 20 : 0))
-  }, [totalLessonsCompleted, loginStreak, currentCgpa])
-
-  useEffect(() => {
-    const c = inProgressCourses[0]
-    if (!c) return
-    fetch('/api/ollama/daily-missions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ course: c.title, department: department?.name || 'General' }),
-    })
-      .then((r) => r.json())
-      .then((d) => setMissionsText(typeof d.text === 'string' ? d.text : ''))
-      .catch(() => setMissionsText(''))
-  }, [inProgressCourses, department?.name])
 
   const stats = [
     { 
