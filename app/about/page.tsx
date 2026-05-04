@@ -14,8 +14,8 @@ import {
   Award, 
   Globe,
   CheckCircle2,
-  Linkedin,
-  Twitter
+  Share2,
+  Mail
 } from "lucide-react"
 
 export const metadata: Metadata = createMetadata({
@@ -227,10 +227,10 @@ export default function AboutPage() {
                   <p className="mt-2 text-sm text-muted-foreground">{member.bio}</p>
                   <div className="mt-4 flex justify-center gap-2">
                     <Button variant="ghost" size="icon" className="h-8 w-8">
-                      <Linkedin className="h-4 w-4" />
+                      <Share2 className="h-4 w-4" />
                     </Button>
                     <Button variant="ghost" size="icon" className="h-8 w-8">
-                      <Twitter className="h-4 w-4" />
+                      <Mail className="h-4 w-4" />
                     </Button>
                   </div>
                 </div>

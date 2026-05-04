@@ -1222,7 +1222,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                           .replace(/\n\n/g, '</p><p>')
                           .replace(/- (.*)/g, '<li>$1</li>')
                           .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-                      }} 
+                      }}
                     />
                   </div>
 
