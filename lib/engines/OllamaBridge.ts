@@ -7,3 +7,11 @@ export function isOllamaHealthy() {
 export function generateLearningRoadmap() {
   return ''
 }
+
+export function formatRoadmapForStorage() {
+  return {}
+}
+
+export function getActiveModel() {
+  return ''
+}
