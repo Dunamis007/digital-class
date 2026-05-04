@@ -1,0 +1,245 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Dunamis EdTech Brand Colors */
+  --background: oklch(0.98 0.002 247);
+  --foreground: oklch(0.15 0.02 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.02 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.02 260);
+  
+  /* Primary Dark Blue #0B1F3F */
+  --primary: oklch(0.22 0.06 260);
+  --primary-foreground: oklch(0.98 0 0);
+  
+  /* Secondary Blue #1E3A8A */
+  --secondary: oklch(0.35 0.12 260);
+  --secondary-foreground: oklch(0.98 0 0);
+  
+  /* Muted */
+  --muted: oklch(0.96 0.005 250);
+  --muted-foreground: oklch(0.5 0.01 250);
+  
+  /* Accent Gold #FBBF24 */
+  --accent: oklch(0.82 0.16 85);
+  --accent-foreground: oklch(0.18 0.04 260);
+  
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0 0);
+  
+  /* Borders #E5E7EB */
+  --border: oklch(0.92 0.005 250);
+  --input: oklch(0.92 0.005 250);
+  --ring: oklch(0.55 0.15 260);
+  
+  /* Chart colors */
+  --chart-1: oklch(0.35 0.12 260);
+  --chart-2: oklch(0.82 0.16 85);
+  --chart-3: oklch(0.55 0.2 260);
+  --chart-4: oklch(0.7 0.15 85);
+  --chart-5: oklch(0.45 0.1 260);
+  
+  --radius: 0.625rem;
+  
+  /* Sidebar */
+  --sidebar: oklch(0.22 0.06 260);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.82 0.16 85);
+  --sidebar-primary-foreground: oklch(0.18 0.04 260);
+  --sidebar-accent: oklch(0.3 0.08 260);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.3 0.06 260);
+  --sidebar-ring: oklch(0.82 0.16 85);
+}
+
+.dark {
+  --background: oklch(0.15 0.02 260);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.2 0.03 260);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.2 0.03 260);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.82 0.16 85);
+  --primary-foreground: oklch(0.18 0.04 260);
+  --secondary: oklch(0.35 0.12 260);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.25 0.03 260);
+  --muted-foreground: oklch(0.7 0.02 250);
+  --accent: oklch(0.82 0.16 85);
+  --accent-foreground: oklch(0.18 0.04 260);
+  --destructive: oklch(0.5 0.2 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.3 0.04 260);
+  --input: oklch(0.3 0.04 260);
+  --ring: oklch(0.82 0.16 85);
+  --chart-1: oklch(0.55 0.2 260);
+  --chart-2: oklch(0.82 0.16 85);
+  --chart-3: oklch(0.65 0.15 260);
+  --chart-4: oklch(0.75 0.12 85);
+  --chart-5: oklch(0.5 0.18 260);
+  --sidebar: oklch(0.18 0.03 260);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.82 0.16 85);
+  --sidebar-primary-foreground: oklch(0.18 0.04 260);
+  --sidebar-accent: oklch(0.25 0.04 260);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.3 0.04 260);
+  --sidebar-ring: oklch(0.82 0.16 85);
+}
+
+@theme inline {
+  --font-sans: 'Inter', 'Inter Fallback', sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* WhatsApp floating button animation */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+.whatsapp-pulse::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: oklch(0.72 0.19 145);
+  animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* Talking lesson avatar (Phase 5) */
+@keyframes dunamis-mouth-speak {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+.dunamis-avatar-mouth.speaking {
+  animation: dunamis-mouth-speak 0.15s ease infinite;
+}
+.dunamis-avatar-mouth.silent {
+  animation: none;
+  transform: scaleY(0.3);
+}
+
+@keyframes dunamis-breathe {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+.dunamis-avatar-body {
+  animation: dunamis-breathe 3s ease infinite;
+}
+
+@keyframes dunamis-blink {
+  0%,
+  95%,
+  100% {
+    transform: scaleY(1);
+  }
+  97% {
+    transform: scaleY(0.05);
+  }
+}
+.dunamis-avatar-eye {
+  animation: dunamis-blink 4s ease infinite;
+}
+
+@keyframes dunamis-nod {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(8deg);
+  }
+  60% {
+    transform: rotate(-4deg);
+  }
+}
+.dunamis-avatar-nod {
+  animation: dunamis-nod 0.6s ease;
+}
+
+@keyframes dunamis-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+.dunamis-avatar-shake {
+  animation: dunamis-shake 0.45s ease;
+}
