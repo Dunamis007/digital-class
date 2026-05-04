@@ -202,7 +202,7 @@ export default function SignupPage() {
                     required
                     placeholder="John"
                     value={formData.firstName}
-                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, firstName: e.target.value })}
                     disabled={isLoading}
                   />
                 </div>
@@ -215,7 +215,7 @@ export default function SignupPage() {
                     required
                     placeholder="Doe"
                     value={formData.lastName}
-                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, lastName: e.target.value })}
                     disabled={isLoading}
                   />
                 </div>
@@ -231,7 +231,7 @@ export default function SignupPage() {
                   required
                   placeholder="you@example.com"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, email: e.target.value })}
                   disabled={isLoading}
                 />
               </div>
@@ -245,7 +245,7 @@ export default function SignupPage() {
                   required
                   placeholder="+234 XXX XXX XXXX"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, phone: e.target.value })}
                   disabled={isLoading}
                 />
               </div>
@@ -279,7 +279,7 @@ export default function SignupPage() {
                   required
                   placeholder="Create a strong password"
                   value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, password: e.target.value })}
                   disabled={isLoading}
                 />
                 <p className="text-xs text-muted-foreground">
